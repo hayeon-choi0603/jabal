@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>출력실 2026-1 · 국민대 시각디자인</title>
+<title>KMU VCD 출력 시스템</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="app">
   <div class="topbar">
     <div class="tb-l">
-      <div class="tb-logo">국민대<br>VCD</div>
+      <div class="tb-logo">KMU<br>VCD</div>
       <div>
-        <div class="tb-title" id="tbTitle">출력실 신청 2026-1</div>
-        <div class="tb-sub" id="tbSub">시각디자인학과 · 출력 서비스</div>
+        <div class="tb-title" id="tbTitle">KMU VCD 출력 시스템</div>
+        <div class="tb-sub" id="tbSub">국민대 시각디자인학과</div>
       </div>
     </div>
     <div class="tb-r">
       <button class="notif-btn" id="notifBtn" onclick="toggleNotif()">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#6b7280"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
         <div class="ndot" id="ndot"></div>
       </button>
       <button class="mode-btn" id="modeBtn" onclick="toggleMode()">관리자</button>
@@ -38,6 +38,25 @@
 
   <!-- ══════════ 학생 페이지 ══════════ -->
   <div class="page on" id="stuPage">
+
+    <!-- Hero -->
+    <div class="hero-section" id="stuHero">
+      <div class="hero-label">2026-1 · 운영 중</div>
+      <div class="hero-title">KMU VCD<br><span class="hl">출력 시스템</span></div>
+    </div>
+
+    <!-- 대기 카드 -->
+    <div class="wait-card-top" id="stuWaitCard">
+      <div class="wc-left">
+        <div class="wc-num" id="qNum">3건</div>
+        <div class="wc-lbl">현재 대기 중</div>
+      </div>
+      <div class="wc-right">
+        <div class="wc-time" id="qTime">약 15분</div>
+        <div class="wc-worker" id="qWorker">근무자 김경민</div>
+      </div>
+    </div>
+
     <div class="tabs" id="stuTabs">
       <div class="tab on" onclick="showSTab(0)">레이저·플로터</div>
       <div class="tab" onclick="showSTab(1)">리소 인쇄</div>
@@ -50,14 +69,6 @@
     <!-- TAB 0 -->
     <div class="scroll" id="st0">
       <div style="max-width:480px;margin:0 auto">
-        <div class="queue-card">
-          <div class="qc-label">현재 대기 현황</div>
-          <div class="qc-main"><div class="qc-num" id="qNum">3</div><div class="qc-unit">건 대기 중</div></div>
-          <div class="qc-grid">
-            <div class="qc-item"><div class="qc-item-lbl">예상 대기시간</div><div class="qc-item-val" id="qTime">약 15분</div></div>
-            <div class="qc-item"><div class="qc-item-lbl">현재 근무자</div><div class="qc-item-val" id="qWorker">김경민</div></div>
-          </div>
-        </div>
         <div class="step-bar">
           <div class="stp cur" id="sp0"><div class="stp-c">1</div><span class="stp-l">정보입력</span></div>
           <div class="stp-line" id="sl01"></div>
@@ -70,18 +81,19 @@
 
         <div id="fs1">
           <div class="card">
-            <div class="ctitle">학생 정보</div>
+            <div class="sec-title">정보를 입력해주세요</div>
+            <div class="sec-sub">이름, 학번, 연락처를 작성해주세요</div>
             <div class="frow">
               <div class="fg"><label>이름</label><input id="sName" placeholder="홍길동"></div>
               <div class="fg"><label>학번</label><input id="sSid" placeholder="20231234"></div>
             </div>
             <div class="fg"><label>연락처</label><input id="sPhone" placeholder="010-0000-0000" type="tel"></div>
             <div class="fg"><label>학생 구분</label>
-              <div class="og2" style="margin-top:2px">
-                <div class="disc-opt" id="disc-0" onclick="selDisc(0,'일반학생')">일반학생</div>
-                <div class="disc-opt" id="disc-1" onclick="selDisc(1,'학생회')">학생회</div>
-                <div class="disc-opt" id="disc-2" onclick="selDisc(2,'과대/부과대')">과대/부과대</div>
-                <div class="disc-opt" id="disc-3" onclick="selDisc(3,'타과생')">타과생</div>
+              <div class="chip-row" style="margin-top:4px">
+                <div class="chip-opt" id="disc-0" onclick="selDisc(0,'일반학생')">일반학생</div>
+                <div class="chip-opt" id="disc-1" onclick="selDisc(1,'학생회')">학생회</div>
+                <div class="chip-opt" id="disc-2" onclick="selDisc(2,'과대/부과대')">과대/부과대</div>
+                <div class="chip-opt" id="disc-3" onclick="selDisc(3,'타과생')">타과생</div>
               </div>
             </div>
           </div>
@@ -360,6 +372,36 @@
     <!-- TAB 5: 안내 -->
     <div class="scroll" id="st5" style="display:none">
       <div style="max-width:480px;margin:0 auto">
+
+        <!-- 진행현황 위젯 -->
+        <div class="card" style="margin-bottom:12px;background:var(--pl);border-color:var(--pl2);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <div>
+              <div style="font-size:10px;font-weight:700;color:var(--p);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;">프로젝트 진행현황</div>
+              <div style="font-size:22px;font-weight:900;color:var(--p);">78% 완성</div>
+            </div>
+            <div style="width:52px;height:52px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--p);">78%</div>
+          </div>
+          <div style="height:6px;background:rgba(79,110,247,.2);border-radius:99px;overflow:hidden;margin-bottom:12px;">
+            <div style="height:100%;width:78%;background:var(--p);border-radius:99px;"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#fff;border-radius:8px;font-size:12px;">
+              <span style="color:#15803d;font-weight:500;">✓ 웹 시스템 완성</span><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;">완료</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#fff;border-radius:8px;font-size:12px;">
+              <span style="color:#15803d;font-weight:500;">✓ 한지연 교수님 오너 확정</span><span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;">완료</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#fffbeb;border-radius:8px;font-size:12px;">
+              <span style="color:#b45309;font-weight:500;">⟳ 출력실 담당자 협의</span><span style="background:#fef3c7;color:#b45309;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;">진행 중</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#fffbeb;border-radius:8px;font-size:12px;">
+              <span style="color:#b45309;font-weight:500;">⟳ 구글 시트 자동 연동</span><span style="background:#fef3c7;color:#b45309;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;">80%</span>
+            </div>
+          </div>
+          <div style="margin-top:10px;font-size:11px;color:var(--pd);font-weight:500;text-align:center;">4/7 테스트 운영 시작 예정 · Soori의 약속</div>
+        </div>
+
         <div class="card"><div class="ctitle">환불 규정</div><ul class="refund-policy"><li>출력 시작 전 취소 시 전액 환불 가능</li><li>출력 완료 후 환불 불가 (학생 파일 오류 포함)</li><li>기기 오류로 인한 실패는 재출력 또는 전액 환불</li><li>파일명·형식 오류로 인한 결과물 환불 불가</li><li>환불: 근무자 직접 연락 또는 출력실 방문</li></ul><div class="btn-row" style="margin-top:10px"><button class="btn warn" onclick="openRefundModal()">환불 신청하기</button></div></div>
         <div class="card"><div class="ctitle">수령일 기준</div><table class="cost-tbl"><tr><td class="lbl">A4~A3</td><td>당일 마감 30분 전까지 입금</td></tr><tr><td class="lbl">A2~A0+</td><td>신청일 +1일 (주말·공휴일 제외)</td></tr></table></div>
         <div class="card"><div class="ctitle">요금표</div><table class="cost-tbl"><tr><td class="lbl">A4 흑백/컬러</td><td>50/100원</td></tr><tr><td class="lbl">A3 흑백/컬러</td><td>100/200원</td></tr><tr><td class="lbl">A2 흑백/컬러</td><td>2,500/5,000원</td></tr><tr><td class="lbl">A1 흑백/컬러</td><td>5,000/7,500원</td></tr><tr><td class="lbl">A0+ 흑백/컬러</td><td>7,500/10,000원</td></tr><tr><td class="lbl">RISO 마스터/인쇄</td><td>1,500원/20원</td></tr></table></div>
@@ -505,160 +547,119 @@
 
 
 <!-- ══════════ SOORI 오버레이 ══════════ -->
-<div id="sooriOverlay" style="position:fixed;inset:0;z-index:99999;background:#fff;font-family:'Noto Sans KR',-apple-system,sans-serif;">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<div id="sooriOverlay" style="position:fixed;inset:0;z-index:99999;">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-#sooriOverlay,#sooriOverlay *{box-sizing:border-box;margin:0;padding:0;}
-.so-shell{display:flex;width:100%;height:100vh;}
-.so-side{width:64px;flex-shrink:0;background:#1a2e6e;display:flex;flex-direction:column;align-items:center;padding:24px 0;}
-.so-logo{font-family:'Bebas Neue',sans-serif;font-size:13px;color:rgba(255,255,255,.9);letter-spacing:.1em;writing-mode:vertical-rl;transform:rotate(180deg);margin-bottom:32px;}
-.so-sdots{display:flex;flex-direction:column;gap:10px;margin:auto 0;}
-.so-sdot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:all .25s;}
-.so-sdot.on{background:#fff;height:24px;border-radius:4px;}
-.so-snum{font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.08em;margin-top:auto;writing-mode:vertical-rl;transform:rotate(180deg);}
-.so-main{flex:1;position:relative;overflow:hidden;background:#fff;}
-.so-slide{position:absolute;inset:0;display:flex;align-items:stretch;opacity:0;pointer-events:none;transition:opacity .4s ease,transform .4s ease;transform:translateY(20px);}
-.so-slide.active{opacity:1;pointer-events:all;transform:translateY(0);}
-.so-slide.prev{opacity:0;transform:translateY(-20px);}
-.so-l{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:48px 64px 100px;border-right:1px solid #e5e7eb;}
-.so-r{width:400px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;padding:48px 48px 100px 40px;background:#f9fafb;}
-.so-tag{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#4f6ef7;margin-bottom:20px;}
-.so-tag::before{content:'';width:16px;height:2px;background:#4f6ef7;border-radius:1px;}
-.so-big{font-size:clamp(44px,5.5vw,76px);font-weight:900;line-height:1.08;color:#111827;margin-bottom:20px;font-family:'Noto Sans KR',sans-serif;}
-.so-big .hl{color:#1a2e6e;}
-.so-big .num{font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,10vw,130px);color:#4f6ef7;line-height:.9;display:block;}
-.so-body{font-size:15px;color:#6b7280;line-height:1.9;max-width:420px;}
-.so-body strong{color:#111827;font-weight:700;}
-.so-body .pt{color:#1a2e6e;font-weight:700;}
-.so-rlabel{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9ca3af;margin-bottom:14px;}
-.so-sbox{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:18px 20px;margin-bottom:10px;}
-.so-sbox.acc{background:#1a2e6e;border-color:#1a2e6e;}
-.so-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:700;padding:3px 9px;border-radius:99px;}
-.bg{background:#dcfce7;color:#16a34a;}.by{background:#fef3c7;color:#d97706;}.bb{background:#eef0fe;color:#4f6ef7;}
-.so-crow{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff;border:1px solid #e5e7eb;border-radius:9px;font-size:13px;margin-bottom:7px;}
-.so-crow.done{border-color:#bbf7d0;background:#f0fdf4;color:#16a34a;font-weight:500;}
-.so-crow.ing{border-color:#fde68a;background:#fffbeb;color:#d97706;font-weight:500;}
-.so-tl{display:flex;flex-direction:column;}
-.so-ti{display:flex;gap:12px;padding-bottom:16px;position:relative;}
-.so-ti:not(:last-child)::after{content:'';position:absolute;left:10px;top:22px;width:1px;bottom:0;background:#e5e7eb;}
-.so-tdot{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;}
-.so-tdot.done{background:#4f6ef7;color:#fff;}.so-tdot.ing{background:#f59e0b;color:#fff;}.so-tdot.wait{background:#f3f4f6;color:#9ca3af;border:1px solid #e5e7eb;}
-.so-tdate{font-size:10px;color:#9ca3af;margin-bottom:1px;}.so-ttext{font-size:13px;font-weight:600;color:#111827;}.so-tnote{font-size:11px;color:#9ca3af;margin-top:1px;}
-.so-pr{display:flex;flex-direction:column;gap:7px;}
-.so-prow{display:flex;align-items:flex-start;gap:8px;padding:10px 13px;background:#fff;border:1px solid #e5e7eb;border-radius:9px;font-size:13px;color:#6b7280;}
-.so-pdot{width:5px;height:5px;border-radius:50%;background:#4f6ef7;flex-shrink:0;margin-top:5px;}
-.so-prow strong{color:#111827;}
-.so-nav{position:fixed;bottom:0;left:64px;right:0;height:76px;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;gap:20px;z-index:100000;}
-.so-nbtn{display:flex;align-items:center;gap:6px;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;border:1.5px solid #e5e7eb;background:#fff;color:#6b7280;transition:all .15s;font-family:'Noto Sans KR',sans-serif;}
-.so-nbtn:hover:not(:disabled){background:#f3f4f6;color:#111827;}
-.so-nbtn:disabled{opacity:.25;cursor:default;}
-.so-nbtn.pri{background:#1a2e6e;color:#fff;border-color:#1a2e6e;padding:12px 36px;font-size:16px;}
-.so-nbtn.pri:hover{background:#0f1e4a;}
-.so-ndots{display:flex;gap:6px;align-items:center;}
-.so-ndot{width:6px;height:6px;border-radius:50%;background:#e5e7eb;cursor:pointer;transition:all .2s;}
-.so-ndot.on{background:#1a2e6e;width:20px;border-radius:3px;}
-.so-cnt{font-size:12px;color:#9ca3af;letter-spacing:.08em;min-width:40px;text-align:center;}
+#sooriOverlay{font-family:'Noto Sans KR',-apple-system,sans-serif;background:#fff;}
+#sooriOverlay *{box-sizing:border-box;margin:0;padding:0;}
+.so-wrap{display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+.so-slides{flex:1;position:relative;overflow:hidden;}
+.so-slide{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:40px 32px 110px;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s ease,transform .35s ease;
+  transform:translateX(28px);
+  text-align:center;
+  overflow-y:auto;
+}
+.so-slide.active{opacity:1;pointer-events:all;transform:translateX(0);}
+.so-slide.prev{opacity:0;transform:translateX(-28px);}
+.so-slide:nth-child(odd){background:#f0f4ff;}
+.so-slide:nth-child(even){background:#fff;}
+.so-icon{font-size:60px;margin-bottom:24px;line-height:1;}
+.so-tag{font-size:12px;font-weight:700;color:#4f6ef7;margin-bottom:10px;letter-spacing:.05em;}
+.so-h{font-size:clamp(26px,7vw,38px);font-weight:900;color:#111827;line-height:1.3;margin-bottom:14px;letter-spacing:-.5px;word-break:keep-all;}
+.so-h .hl{color:#4f6ef7;}
+.so-p{font-size:16px;color:#6b7280;line-height:1.8;word-break:keep-all;max-width:300px;}
+.so-p strong{color:#111827;font-weight:700;}
+.so-pct-section{margin-top:24px;width:100%;max-width:280px;}
+.so-pct-row{display:flex;justify-content:space-between;margin-bottom:7px;}
+.so-pct-lbl{font-size:12px;color:#9ca3af;font-weight:600;}
+.so-pct-val{font-size:12px;font-weight:700;color:#4f6ef7;}
+.so-pct-track{height:7px;background:#e5e7eb;border-radius:99px;overflow:hidden;}
+.so-pct-fill{height:100%;background:#4f6ef7;border-radius:99px;width:0%;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+.so-items{margin-top:16px;display:flex;flex-direction:column;gap:7px;width:100%;max-width:280px;}
+.so-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:12px;font-size:13px;font-weight:600;}
+.so-item.done{background:#f0fdf4;color:#15803d;}
+.so-item.ing{background:#fffbeb;color:#b45309;}
+.so-item-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;flex-shrink:0;}
+.done .so-item-badge{background:#dcfce7;color:#15803d;}
+.ing .so-item-badge{background:#fef3c7;color:#b45309;}
+.so-prof{background:#4f6ef7;border-radius:16px;padding:18px 22px;margin-top:22px;width:100%;max-width:280px;text-align:left;}
+.so-prof-sub{font-size:11px;color:rgba(255,255,255,.6);margin-bottom:4px;}
+.so-prof-name{font-size:22px;font-weight:900;color:#fff;}
+.so-prof-tag{display:inline-block;background:rgba(255,255,255,.2);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:99px;margin-top:8px;}
+.so-tl{margin-top:22px;display:flex;flex-direction:column;gap:0;width:100%;max-width:280px;text-align:left;}
+.so-ti{display:flex;gap:12px;padding-bottom:14px;position:relative;}
+.so-ti:not(:last-child)::after{content:'';position:absolute;left:11px;top:24px;width:1px;bottom:0;background:#e5e7eb;}
+.so-tdot{width:24px;height:24px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;}
+.so-tdot.done{background:#4f6ef7;color:#fff;}
+.so-tdot.ing{background:#f59e0b;color:#fff;}
+.so-tdot.wait{background:#f3f4f6;color:#9ca3af;border:1.5px solid #e5e7eb;}
+.so-tdate{font-size:10px;color:#9ca3af;margin-bottom:2px;}
+.so-ttext{font-size:14px;font-weight:700;color:#111827;}
+.so-prlist{margin-top:20px;display:flex;flex-direction:column;gap:10px;width:100%;max-width:280px;text-align:left;}
+.so-pr{display:flex;align-items:center;gap:10px;font-size:15px;color:#374151;}
+.so-pr::before{content:'✓';color:#4f6ef7;font-weight:900;flex-shrink:0;}
+.so-pr strong{color:#111827;}
+.so-nav{position:fixed;bottom:0;left:0;right:0;padding:14px 24px 28px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:12px;z-index:100001;}
+.so-ndots{display:flex;gap:7px;align-items:center;}
+.so-ndot{width:7px;height:7px;border-radius:50%;background:#d1d5db;cursor:pointer;transition:all .2s;}
+.so-ndot.on{background:#4f6ef7;width:22px;border-radius:4px;}
+.so-next-btn{width:100%;max-width:360px;padding:16px;border-radius:99px;background:#4f6ef7;color:#fff;font-size:16px;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:background .15s;}
+.so-next-btn:active{background:#3a58e0;}
 </style>
-
-<div class="so-shell">
-  <div class="so-side">
-    <div class="so-logo">SOORI</div>
-    <div class="so-sdots" id="soSD"></div>
-    <div class="so-snum" id="soSN">01/05</div>
-  </div>
-  <div class="so-main">
+<div class="so-wrap">
+  <div class="so-slides">
 
     <div class="so-slide active" id="so0">
-      <div class="so-l">
-        <div class="so-tag">현재 진행 현황</div>
-        <div class="so-big"><span class="num">78%</span>완성되었습니다.</div>
-        <p class="so-body">핵심 기능은 모두 완성되었습니다.<br>현재 <strong>테스트가 진행 중</strong>이며,<br>출력실 담당자 협의가 마무리되는 즉시<br><span class="pt">공식 운영이 시작됩니다.</span></p>
+      <div class="so-icon">📊</div>
+      <div class="so-tag">현재 진행 현황</div>
+      <div class="so-h">현재 <span class="hl">78%</span><br>완성되었습니다.</div>
+      <p class="so-p">출력실 담당자 협의가 마무리되면<br><strong>공식 운영이 시작됩니다.</strong></p>
+      <div class="so-pct-section">
+        <div class="so-pct-row"><span class="so-pct-lbl">전체 완성도</span><span class="so-pct-val">78%</span></div>
+        <div class="so-pct-track"><div class="so-pct-fill" id="soPctFill"></div></div>
       </div>
-      <div class="so-r">
-        <div class="so-rlabel">항목별 현황</div>
-        <div class="so-crow done"><span>✓ 웹 시스템 완성 & 배포</span><span class="so-badge bg">완료</span></div>
-        <div class="so-crow done"><span>✓ 한지연 교수님 오너 확정</span><span class="so-badge bg">완료</span></div>
-        <div class="so-crow done"><span>✓ 데이터베이스 구축</span><span class="so-badge bg">완료</span></div>
-        <div class="so-crow done"><span>✓ 파일 업로드 시스템</span><span class="so-badge bg">완료</span></div>
-        <div class="so-crow ing"><span>⟳ 출력실 담당자 협의</span><span class="so-badge by">진행 중</span></div>
-        <div class="so-crow ing"><span>⟳ 구글 시트 자동 연동</span><span class="so-badge by">80%</span></div>
-      </div>
+      <p class="so-p" style="margin-top:20px;text-align:left;font-size:14px;line-height:2;">
+        ✓ 웹 시스템 완성<br>
+        ✓ 한지연 교수님 오너 확정<br>
+        ✓ 데이터베이스 구축<br>
+        ⟳ 담당자 협의 중<br>
+        ⟳ 구글 시트 연동 80%
+      </p>
     </div>
 
     <div class="so-slide" id="so1">
-      <div class="so-l">
-        <div class="so-tag">교수님 오너 확정</div>
-        <div class="so-big">교수님을<br>직접 설득해<br><span class="hl">오너로 섭외</span><br>했습니다.</div>
-        <p class="so-body">교수님이 오너인 이상,<br><span class="pt">이 시스템의 실현은 거의 확정입니다.</span><br><br>과제가 끝나도 이 프로젝트는 계속됩니다.<br><strong>Soori는 끝까지 실현 시킵니다.</strong></p>
-      </div>
-      <div class="so-r">
-        <div class="so-sbox acc" style="margin-bottom:10px;">
-          <div style="font-size:11px;color:rgba(255,255,255,.55);margin-bottom:5px;">출력실 담당 교수님</div>
-          <div style="font-size:26px;font-weight:700;color:#fff;font-family:'Noto Sans KR',sans-serif;">한지연 교수님</div>
-          <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:5px;">오너로 공식 참여 확정</div>
-        </div>
-        <div class="so-sbox">
-          <div style="font-size:12px;font-weight:700;color:#111827;margin-bottom:10px;">이것이 의미하는 것</div>
-          <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:#6b7280;line-height:1.6;">
-            <div>→ <strong style="color:#111827;">공식 운영</strong>의 제도적 보증</div>
-            <div>→ 학생 주도 + <strong style="color:#111827;">교수님 백업</strong></div>
-            <div>→ 단순 과제가 아닌 <strong style="color:#1a2e6e;">실제 프로젝트</strong></div>
-          </div>
-        </div>
-      </div>
+      <div class="so-icon">🎓</div>
+      <div class="so-tag">교수님 오너 확정</div>
+      <div class="so-h">교수님을 직접<br>설득해 <span class="hl">오너로</span><br>섭외했습니다.</div>
+      <p class="so-p"><strong>한지연 교수님</strong>이 오너로 참여하셨습니다.<br>과제가 끝나도<br>이 프로젝트는 <strong>계속됩니다.</strong></p>
     </div>
 
     <div class="so-slide" id="so2">
-      <div class="so-l">
-        <div class="so-tag">앞으로의 일정</div>
-        <div class="so-big"><span class="hl">4/7</span><br>테스트 운영<br>시작 예정.</div>
-        <p class="so-body">현재 테스트가 진행 중이며,<br>담당자 협의가 완료되는 즉시<br><span class="pt">운영을 시작할 수 있는 상태</span>입니다.<br><br>이번 학기가 아니더라도<br><strong>재학 기간 내 반드시 실현</strong>합니다.</p>
-      </div>
-      <div class="so-r">
-        <div class="so-rlabel">전체 로드맵</div>
-        <div class="so-tl">
-          <div class="so-ti"><div class="so-tdot done">✓</div><div><div class="so-tdate">2026년 3월 · 완료</div><div class="so-ttext">시스템 구축 + 교수님 오너 확정</div></div></div>
-          <div class="so-ti"><div class="so-tdot ing">→</div><div><div class="so-tdate">2026년 4/7 · 목표</div><div class="so-ttext">테스트 운영 시작</div><div class="so-tnote">담당자 협의 완료 즉시</div></div></div>
-          <div class="so-ti"><div class="so-tdot wait">○</div><div><div class="so-tdate">이번 학기 내</div><div class="so-ttext">공식 운영 시작</div></div></div>
-          <div class="so-ti"><div class="so-tdot wait">○</div><div><div class="so-tdate">재학 기간 내 · 무조건</div><div class="so-ttext">완전한 시스템 공식 운영</div></div></div>
-        </div>
+      <div class="so-icon">📅</div>
+      <div class="so-tag">앞으로의 일정</div>
+      <div class="so-h"><span class="hl">4/7</span> 테스트<br>운영 시작 예정.</div>
+      <div class="so-tl">
+        <div class="so-ti"><div class="so-tdot done">✓</div><div><div class="so-tdate">2026년 3월 · 완료</div><div class="so-ttext">시스템 구축 + 교수님 오너 확정</div></div></div>
+        <div class="so-ti"><div class="so-tdot ing">→</div><div><div class="so-tdate">4/7 · 목표</div><div class="so-ttext">테스트 운영 시작</div></div></div>
+        <div class="so-ti"><div class="so-tdot wait">○</div><div><div class="so-tdate">이번 학기 내</div><div class="so-ttext">공식 운영 시작</div></div></div>
+        <div class="so-ti"><div class="so-tdot wait">○</div><div><div class="so-tdate">재학 기간 내 · 무조건</div><div class="so-ttext">완전한 시스템 공식 운영</div></div></div>
       </div>
     </div>
 
     <div class="so-slide" id="so3">
-      <div class="so-l">
-        <div class="so-tag">여러분의 코인이 필요한 이유</div>
-        <div class="so-big">이 시스템은<br>과제가 끝나도<br><span class="hl">계속됩니다.</span></div>
-        <p class="so-body">하지만 과제가 끝나야<br>더 빠르게 실현시킬 수 있다는<br>아이러니가 있습니다.<br><br>여러분의 코인 한 표가<br><span class="pt">이 시스템이 필요하다는 증거</span>가 됩니다.<br><br><strong style="font-size:17px;">수리의 힘이 되어주세요.</strong></p>
-      </div>
-      <div class="so-r">
-        <div class="so-sbox" style="border-color:#fbbf24;background:#fffbeb;margin-bottom:10px;">
-          <div style="font-size:12px;font-weight:700;color:#92400e;margin-bottom:8px;">이것만 기억해주세요</div>
-          <div style="font-size:16px;color:#78350f;line-height:1.8;font-weight:600;">이 시스템은<br><strong>과제가 끝나도 계속됩니다.</strong></div>
-        </div>
-        <div class="so-sbox acc">
-          <div style="font-size:20px;font-weight:900;color:#fff;line-height:1.5;font-family:'Noto Sans KR',sans-serif;">수리의 힘이<br>되어주세요 🙏</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="so-slide" id="so4">
-      <div class="so-l">
-        <div class="so-tag">약속</div>
-        <div class="so-big" style="font-size:clamp(28px,3.8vw,52px);line-height:1.2;">최하연 (Soori)의<br>이름을 걸고<br><span class="hl">실현 시킵니다.</span></div>
-        <p class="so-body">진행 상황은 이 페이지에서<br><span class="pt">실시간으로 계속 업데이트</span>됩니다.</p>
-        <button onclick="closeSoori()" style="margin-top:24px;background:#1a2e6e;color:#fff;font-weight:700;font-size:15px;padding:14px 28px;border-radius:10px;border:none;cursor:pointer;font-family:'Noto Sans KR',sans-serif;">출력실 시스템 바로가기 →</button>
-      </div>
-      <div class="so-r">
-        <div class="so-rlabel">약속 목록</div>
-        <div class="so-pr">
-          <div class="so-prow"><div class="so-pdot"></div><div><strong>4/7</strong> 테스트 운영 시작 예정</div></div>
-          <div class="so-prow"><div class="so-pdot"></div><div>출력실 담당자 협의 중 — <strong>한지연 교수님 백업</strong></div></div>
-          <div class="so-prow"><div class="so-pdot"></div><div>이번 학기 내 공식 운영 목표</div></div>
-          <div class="so-prow"><div class="so-pdot"></div><div><strong>재학 기간 내 반드시 실현</strong> 보장</div></div>
-          <div class="so-prow"><div class="so-pdot"></div><div>진행 상황 <strong>이 페이지 실시간 공개</strong></div></div>
-        </div>
-        <div style="margin-top:10px;padding:13px 16px;background:#eef0fe;border-radius:10px;font-size:13px;color:#1a2e6e;font-weight:700;text-align:center;">수리의 힘이 되어주세요 🙏</div>
+      <div class="so-icon">✍️</div>
+      <div class="so-tag">약속</div>
+      <div class="so-h">최하연 (Soori)의<br>이름을 걸고<br><span class="hl">실현 시킵니다.</span></div>
+      <div class="so-prlist">
+        <div class="so-pr"><strong>4/7</strong> 테스트 운영 시작 예정</div>
+        <div class="so-pr">이번 학기 내 공식 운영 목표</div>
+        <div class="so-pr"><strong>재학 기간 내 반드시 실현</strong></div>
+        <div class="so-pr">진행 상황 <strong>실시간 공개</strong></div>
       </div>
     </div>
 
@@ -666,37 +667,36 @@
 </div>
 
 <div class="so-nav">
-  <button class="so-nbtn" id="soPrev" onclick="soGo(soC-1)" disabled>← 이전</button>
   <div class="so-ndots" id="soND"></div>
-  <span class="so-cnt" id="soCnt">01 / 05</span>
-  <button class="so-nbtn pri" id="soNext" onclick="soGo(soC+1)">다음 →</button>
+  <button class="so-next-btn" id="soNextBtn" onclick="soGo(soC+1)">다음</button>
 </div>
 
 <script>
-var soC=0,soT=5;
+var soC=0,soT=4;
 (function(){
-  var sd=document.getElementById('soSD'),nd=document.getElementById('soND');
+  var nd=document.getElementById('soND');
   for(var i=0;i<soT;i++){
     (function(idx){
-      var s=document.createElement('div');s.className='so-sdot'+(idx===0?' on':'');s.onclick=function(){soGo(idx);};sd.appendChild(s);
-      var n=document.createElement('div');n.className='so-ndot'+(idx===0?' on':'');n.onclick=function(){soGo(idx);};nd.appendChild(n);
+      var n=document.createElement('div');
+      n.className='so-ndot'+(idx===0?' on':'');
+      n.onclick=function(){soGo(idx);};
+      nd.appendChild(n);
     })(i);
   }
+  setTimeout(function(){
+    var b=document.getElementById('soPctFill');
+    if(b)b.style.width='78%';
+  },500);
 })();
 function soGo(n){
-  if(n<0||n>=soT)return;
+  if(n<0||n>=soT){closeSoori();return;}
   var ss=document.querySelectorAll('.so-slide');
   ss[soC].classList.remove('active');ss[soC].classList.add('prev');
-  setTimeout(function(){ss.forEach(function(s){s.classList.remove('prev');});},420);
+  setTimeout(function(){ss.forEach(function(s){s.classList.remove('prev');});},380);
   soC=n;ss[soC].classList.add('active');
-  document.querySelectorAll('.so-sdot').forEach(function(el,i){el.classList.toggle('on',i===soC);});
   document.querySelectorAll('.so-ndot').forEach(function(el,i){el.classList.toggle('on',i===soC);});
-  document.getElementById('soPrev').disabled=soC===0;
-  document.getElementById('soSN').textContent=String(soC+1).padStart(2,'0')+'/'+String(soT).padStart(2,'0');
-  document.getElementById('soCnt').textContent=String(soC+1).padStart(2,'0')+' / '+String(soT).padStart(2,'0');
-  var nb=document.getElementById('soNext');
-  if(soC===soT-1){nb.textContent='시스템 바로가기 →';nb.onclick=closeSoori;}
-  else{nb.textContent='다음 →';nb.onclick=function(){soGo(soC+1);};}
+  var nb=document.getElementById('soNextBtn');
+  if(nb)nb.textContent=soC===soT-1?'출력실 시스템 바로가기 →':'다음';
 }
 function closeSoori(){
   var o=document.getElementById('sooriOverlay');
@@ -708,6 +708,12 @@ document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight')soGo(soC+1);
   if(e.key==='ArrowLeft')soGo(soC-1);
   if(e.key==='Escape')closeSoori();
+});
+var soTX=0;
+document.addEventListener('touchstart',function(e){soTX=e.touches[0].clientX;});
+document.addEventListener('touchend',function(e){
+  var d=soTX-e.changedTouches[0].clientX;
+  if(Math.abs(d)>50){d>0?soGo(soC+1):soGo(soC-1);}
 });
 </script>
 </div>
